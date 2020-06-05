@@ -8,7 +8,7 @@ import random
 
 BOT_PREFIX = "?"
 
-getToken = open("discordtoken.txt", "r")
+getToken = open("../discordtoken.txt", "r")
 
 TOKEN = getToken.readline().strip()
 

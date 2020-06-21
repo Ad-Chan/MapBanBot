@@ -1,13 +1,13 @@
 import random
 
-class cs:
+class r6:
 
     def __init__(self, id, user1, user2, bestof):
         self.id = id
         self.user1 = user1
         self.user2 = user2
-        self.allmaps = {"de_dust2":"neutral", "de_inferno":"neutral", "de_mirage":"neutral", "de_nuke":"neutral", 
-        "de_overpass":"neutral", "de_train":"neutral", "de_vertigo":"neutral"}
+        self.allmaps = {"Bank":"neutral", "Oregon":"neutral", "Theme Park":"neutral", "Border":"neutral", "Club House":"neutral", "Coastline":"neutral", 
+        "Consulate":"neutral", "Kafe Dostoyevsky":"neutral", "Villa":"neutral"}
         self.bestof = bestof
         self.nextBan = ""
         self.banNum = 0
@@ -40,7 +40,7 @@ class cs:
         self.bestof = bestof
 
     def getUnbannedmaps(self):
-        reaction = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣']
+        reaction = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣']
         retstring = "Maps remaining:"
         i = 0
         for x, y in self.allmaps.items():
@@ -73,7 +73,7 @@ class cs:
             for x in self.allmaps:
                 retstring+= x
                 retstring+="\n"
-            retstring+= "\nBest of 3, each team bans once, picks once, bans once."
+            retstring+= "\nBest of 3, each team bans twice, picks once, bans once."
             if team1 == 0:
                 retstring+="\n" + str(self.user1) + " has been randomly picked to start bans."
                 self.nextBan = self.user1
@@ -88,8 +88,8 @@ class cs:
         if self.bestof is 1:
             retstring += "\nIt is your turn to ban, react to ban the next map"
         if self.bestof is 3:
-            banstage = [0, 1, 4, 5]
-            pickstage = [2, 3]
+            banstage = [0, 1, 2, 3, 6, 7]
+            pickstage = [4, 5]
             if self.banNum in banstage:
                 retstring += "\nIt is your turn to ban, react to ban the next map"
             elif self.banNum in pickstage:
@@ -126,16 +126,16 @@ class cs:
             msg = self.nextBan + " banned " + maplist[mapnum]
             self.history += msg + "\n"
         if self.bestof == 3:
-            banstage = [0, 1, 4, 5]
+            banstage = [0, 1, 2, 3, 6, 7]
             if self.banNum in banstage:
                 self.allmaps[maplist[mapnum]] = "banned"
                 msg = self.nextBan + " banned " + maplist[mapnum]
                 self.history += msg + "\n"
-            elif self.banNum == 2:
+            elif self.banNum == 4:
                 self.allmaps[maplist[mapnum]] = "picked1"
                 msg = self.nextBan + " picked " + maplist[mapnum]
                 self.history += msg + "\n"
-            elif self.banNum == 3:
+            elif self.banNum == 5:
                 self.allmaps[maplist[mapnum]] = "picked2"
                 msg = self.nextBan + " picked " + maplist[mapnum]
                 self.history += msg + "\n"                  
@@ -166,8 +166,3 @@ class cs:
 
     def getHistory(self):
         return self.history
-                
-
-#testclass = cs(1, "u1", "u2", 3)
-#print(testclass.startbans())
-#print(testclass.getUnbannedmaps())

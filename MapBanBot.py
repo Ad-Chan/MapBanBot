@@ -49,9 +49,11 @@ async def test(ctx, user2):
             if members.name == user2:
                 print("FOUND MEMBER " + members.name)
                 user2ID = members.id
+                break
             if members.display_name == user2:
                 print("FOUND MEMBER " + members.name)
-                user2ID = members.id   
+                user2ID = members.id
+                break   
 
 @client.command(pass_context=True)
 async def startr6bans(ctx, user2, bestof):
@@ -63,9 +65,11 @@ async def startr6bans(ctx, user2, bestof):
             if members.name == user2:
                 print("FOUND MEMBER " + members.name)
                 user2ID = members.id
+                break
             if members.display_name == user2:
                 print("FOUND MEMBER " + members.name)
-                user2ID = members.id                  
+                user2ID = members.id
+                break                  
 
     member = get(client.get_all_members(), id=user2ID)
     if member:
@@ -173,9 +177,11 @@ async def startcsbans(ctx, user2, bestof):
             if members.name == user2:
                 print("FOUND MEMBER " + members.name)
                 user2ID = members.id
+                break
             if members.display_name == user2:
                 print("FOUND MEMBER " + members.name)
                 user2ID = members.id  
+                break
 
     member = get(client.get_all_members(), id=user2ID)
     if member:

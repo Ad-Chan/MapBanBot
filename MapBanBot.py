@@ -566,7 +566,7 @@ async def startcsbans(ctx, user2, bestof):
             #await client.send_message(textchannel, newcsbans.getHistory())
             #await client.send_message(textchannel, newcsbans.getRemainingMaps())       
             await textchannel.send(newcsbans.getHistory())
-            await textchannel.send(newr6bans.getRemainingMaps())  
+            await textchannel.send(newcsbans.getRemainingMaps())  
 
     else:
         print("member not found")

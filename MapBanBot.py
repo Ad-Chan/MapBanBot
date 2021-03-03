@@ -215,6 +215,7 @@ async def startr6bans(ctx, user2, bestof):
 
 @client.command(pass_context=True)
 async def startvalbans(ctx, user1, user2, bestof):
+    #HELPER FUNCTIONS
     def checkAuthor(reaction, user):
             return user == team1 and str(reaction.emoji) in ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣']
 
@@ -226,6 +227,7 @@ async def startvalbans(ctx, user1, user2, bestof):
     print(user2)
     user2ID = ""
     user1ID = ""
+    #FIND MEMBERS
     for server in client.guilds:
         for members in server.members:
             if members.name == user1:
@@ -248,6 +250,7 @@ async def startvalbans(ctx, user1, user2, bestof):
                 break
     team1 = get(client.get_all_members(), id=user1ID)            
     team2 = get(client.get_all_members(), id=user2ID)
+    #IF MEMBERS ARE FOUND
     if team1.id and team2.id:
         print("members found")
         newvalbans = valorant(1, str(user1), str(user2), int(bestof))
@@ -259,7 +262,7 @@ async def startvalbans(ctx, user1, user2, bestof):
         await team2.send(msg)
         if newvalbans.getBestof() == 1:
             reaction2 = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣']
-            while newvalbans.checkMaps() > 2:
+            while newvalbans.checkMaps() > 1:
                 if newvalbans.getnextBan() == team1.id:
                     msg = newvalbans.processBan()
                     sent = await team1.send(msg)
@@ -286,7 +289,7 @@ async def startvalbans(ctx, user1, user2, bestof):
                     msg = newvalbans.banpick(reaction2.index(reaction.emoji))
                     await team1.send(msg)
                     await team2.send(msg)
-            newvalbans.randBan()
+            #newvalbans.randBan()
             await team1.send(newvalbans.getRemainingMaps())
             await team2.send(newvalbans.getRemainingMaps())            
             for server in client.guilds:
@@ -425,7 +428,7 @@ async def startcsbans(ctx, user2, bestof):
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
-                    reaction, user = await client.wair_for('reaction_add', check = checkAuthor)
+                    reaction, user = await client.wait_for('reaction_add', check = checkAuthor)
                     msg = newcsbans.banpick(reaction2.index(reaction.emoji))
                     await ctx.message.author.send(msg)
                     await member.send(msg)   

@@ -8,7 +8,7 @@ class valorant:
         self.user2 = user2
         self.user1ID = ""
         self.user2ID = ""
-        self.allmaps = {"Ascent":"neutral", "Bind":"neutral", "Haven":"neutral", "Split":"neutral"}
+        self.allmaps = {"Ascent":"neutral", "Bind":"neutral", "Haven":"neutral", "Split":"neutral", "Icebox":"neutral"}
         self.bestof = bestof
         self.nextBan = ""
         self.banNum = 0
@@ -88,7 +88,7 @@ class valorant:
         if self.bestof is 1:
             retstring += "\nIt is your turn to ban, react to ban the next map"
         if self.bestof is 3:
-            banstage = [2]
+            banstage = [2,3]
             pickstage = [0, 1]
             if self.banNum in banstage:
                 retstring += "\nIt is your turn to ban, react to ban the next map"
@@ -131,7 +131,7 @@ class valorant:
             msg = currBan + " banned " + maplist[mapnum]
             self.history += msg + "\n"
         if self.bestof == 3:
-            banstage = [2]
+            banstage = [2, 3]
             if self.banNum in banstage:
                 self.allmaps[maplist[mapnum]] = "banned"
                 msg = currBan + " banned " + maplist[mapnum]

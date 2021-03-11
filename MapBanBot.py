@@ -35,7 +35,7 @@ client.remove_command('help')
 
 #=============Channels=================
 client.R6channel = 721312912630611968
-client.CSchannel = 721312912630611968
+client.CSchannel = 817836218305216572
 client.VALchannel = 732600159669846127  
 client.TESTchannel = 717009987066527845
 #=======================================

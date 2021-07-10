@@ -8,12 +8,34 @@ class r6:
         self.user2 = user2
         self.user1ID = ""
         self.user2ID = ""           
-        self.allmaps = {"Bank":"neutral", "Oregon":"neutral", "Theme Park":"neutral", "Border":"neutral", "Club House":"neutral", "Coastline":"neutral", 
-        "Consulate":"neutral", "Kafe Dostoyevsky":"neutral", "Villa":"neutral"}
+        self.mappool = {"Bank":"neutral", "Border":"neutral", "Chalet":"neutral", "Coastline":"neutral", "Consulate":"neutral", 
+        "Fortress":"neutral", "House":"neutral", "Kanal":"neutral", "Outback":"neutral", 
+        "Skyscraper":"neutral", "Theme Park":"neutral"} 
+        self.allmaps = {}
         self.bestof = bestof
         self.nextBan = ""
         self.banNum = 0
         self.history = ""
+        self.randomiseMaps()
+
+    def randomiseMaps(self):
+        maps = self.mappool.items()
+        history = []
+        for m in range(5):
+            print(history)
+            index = random.randrange(len(self.mappool))
+            while index in history:
+                index = random.randrange(len(self.mappool))
+            history.append(index)
+            i = 0
+            for x, y in maps:
+                if i != index:
+                    i+= 1
+                    continue
+                else:
+                    self.allmaps[x] = y
+                    break
+
 
     def getUID(self):
         UID = [self.user1ID, self.user2ID]
@@ -65,32 +87,20 @@ class r6:
 
     def startbans(self):
         retstring = ""
-        team1 = random.randrange(2)
+        #team1 = random.randrange(2)
         if self.bestof is 1:
             retstring = "Maps in pool are:\n"
             for x in self.allmaps:
                 retstring+= x
                 retstring+="\n"
             retstring+= "\nBest of 1, each team bans till the last map remaining."
-            if team1 == 0:
-                retstring+= "\n" + str(self.user1) + " has been randomly picked to start bans."
-                self.nextBan = self.user1ID
-            if team1 == 1:
-                retstring+=" \n" + str(self.user2) + " has been randomly picked to start bans."
-                self.nextBan = self.user2ID
         elif self.bestof is 3:
             retstring = "Maps in pool are:\n"
             for x in self.allmaps:
                 retstring+= x
                 retstring+="\n"
-            retstring+= "\nBest of 3, each team bans twice, picks once, bans once."
-            if team1 == 0:
-                retstring+="\n" + str(self.user1) + " has been randomly picked to start bans."
-                self.nextBan = self.user1ID
-            if team1 == 1:
-                retstring+="\n" + str(self.user2) + " has been randomly picked to start bans."
-                self.nextBan = self.user2ID
-
+            retstring+= "\nBest of 3, each team bans once, picks once"
+        self.nextBan = self.user1ID
         return retstring
 
     def processBan(self):
@@ -98,8 +108,8 @@ class r6:
         if self.bestof is 1:
             retstring += "\nIt is your turn to ban, react to ban the next map"
         if self.bestof is 3:
-            banstage = [0, 1, 2, 3, 6, 7]
-            pickstage = [4, 5]
+            banstage = [0, 1]
+            pickstage = [2, 3, 4]
             if self.banNum in banstage:
                 retstring += "\nIt is your turn to ban, react to ban the next map"
             elif self.banNum in pickstage:
@@ -141,19 +151,23 @@ class r6:
             msg = currBan + " banned " + maplist[mapnum]
             self.history += msg + "\n"
         if self.bestof == 3:
-            banstage = [0, 1, 2, 3, 6, 7]
+            banstage = [0, 1]
             if self.banNum in banstage:
                 self.allmaps[maplist[mapnum]] = "banned"
                 msg = currBan + " banned " + maplist[mapnum]
                 self.history += msg + "\n"
-            elif self.banNum == 4:
+            elif self.banNum == 2:
                 self.allmaps[maplist[mapnum]] = "picked1"
                 msg = currBan + " picked " + maplist[mapnum]
                 self.history += msg + "\n"
-            elif self.banNum == 5:
+            elif self.banNum == 3:
                 self.allmaps[maplist[mapnum]] = "picked2"
                 msg = currBan + " picked " + maplist[mapnum]
-                self.history += msg + "\n"                  
+                self.history += msg + "\n"  
+            elif self.banNum == 4:
+                self.allmaps[maplist[mapnum]] = "picked2"
+                msg = currBan + " picked " + maplist[mapnum]
+                self.history += msg + "\n"                    
         if self.nextBan == self.user1ID:
             self.nextBan = self.user2ID
         elif self.nextBan == self.user2ID:

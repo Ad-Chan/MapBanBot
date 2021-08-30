@@ -65,7 +65,7 @@ class valorant:
     def startbans(self):
         retstring = ""
         #team1 = random.randrange(2)
-        if self.bestof is 1:
+        if self.bestof == 1:
             retstring = "Maps in pool are:\n"
             for x in self.allmaps:
                 retstring+= x
@@ -73,7 +73,7 @@ class valorant:
             retstring+= "\nBest of 1, each team bans till the last map remaining."
 
 
-        elif self.bestof is 3:
+        elif self.bestof == 3:
             retstring = "Maps in pool are:\n"
             for x in self.allmaps:
                 retstring+= x
@@ -85,9 +85,9 @@ class valorant:
 
     def processBan(self):
         retstring = self.getUnbannedmaps()
-        if self.bestof is 1:
+        if self.bestof == 1:
             retstring += "\nIt is your turn to ban, react to ban the next map"
-        if self.bestof is 3:
+        if self.bestof == 3:
             banstage = [0, 1]
             pickstage = [2, 3]
             if self.banNum in banstage:
@@ -100,7 +100,7 @@ class valorant:
     def checkMaps(self):
         i = 0
         for x, y in self.allmaps.items():
-            if y is "neutral":
+            if y == "neutral":
                 i+= 1
         #print("checkMaps " + str(i))
         return i
@@ -167,7 +167,7 @@ class valorant:
 
     def findMaps(self, term):
         for x, y in self.allmaps.items():
-            if y is term:
+            if y == term:
                 return x
 
     def getHistory(self):

@@ -137,7 +137,7 @@ async def startr6bans(ctx, user1, user2, bestof):
                     sent = await team1.send(msg)
                     i = 0
                     for x, y in newr6bans.getAllmaps().items():
-                        if y is "neutral":
+                        if y == "neutral":
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
@@ -150,7 +150,7 @@ async def startr6bans(ctx, user1, user2, bestof):
                     sent = await team2.send(msg)
                     i = 0
                     for x, y in newr6bans.getAllmaps().items():
-                        if y is "neutral":
+                        if y == "neutral":
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
@@ -178,7 +178,7 @@ async def startr6bans(ctx, user1, user2, bestof):
                     sent = await team1.send(msg)
                     i = 0
                     for x, y in newr6bans.getAllmaps().items():
-                        if y is "neutral":
+                        if y == "neutral":
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
@@ -191,7 +191,7 @@ async def startr6bans(ctx, user1, user2, bestof):
                     sent = await team2.send(msg)
                     i = 0
                     for x, y in newr6bans.getAllmaps().items():
-                        if y is "neutral":
+                        if y == "neutral":
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
@@ -268,7 +268,7 @@ async def startvalbans(ctx, user1, user2, bestof):
                     sent = await team1.send(msg)
                     i = 0
                     for x, y in newvalbans.getAllmaps().items():
-                        if y is "neutral":
+                        if y == "neutral":
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
@@ -281,7 +281,7 @@ async def startvalbans(ctx, user1, user2, bestof):
                     sent = await team2.send(msg)
                     i = 0
                     for x, y in newvalbans.getAllmaps().items():
-                        if y is "neutral":
+                        if y == "neutral":
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
@@ -307,7 +307,7 @@ async def startvalbans(ctx, user1, user2, bestof):
                     sent = await team1.send(msg)
                     i = 0
                     for x, y in newvalbans.getAllmaps().items():
-                        if y is "neutral":
+                        if y == "neutral":
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
@@ -320,7 +320,7 @@ async def startvalbans(ctx, user1, user2, bestof):
                     sent = await team2.send(msg)
                     i = 0
                     for x, y in newvalbans.getAllmaps().items():
-                        if y is "neutral":
+                        if y == "neutral":
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
@@ -398,7 +398,7 @@ async def startcsbans(ctx, user1, user2, bestof):
                     sent = await team1.send(msg)
                     i = 0
                     for x, y in newcsbans.getAllmaps().items():
-                        if y is "neutral":
+                        if y == "neutral":
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
@@ -412,7 +412,7 @@ async def startcsbans(ctx, user1, user2, bestof):
                     sent = await team2.send(msg)
                     i = 0
                     for x, y in newcsbans.getAllmaps().items():
-                        if y is "neutral":
+                        if y == "neutral":
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
@@ -439,7 +439,7 @@ async def startcsbans(ctx, user1, user2, bestof):
                     sent = await team1.send(msg)
                     i = 0
                     for x, y in newcsbans.getAllmaps().items():
-                        if y is "neutral":
+                        if y == "neutral":
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
@@ -452,7 +452,7 @@ async def startcsbans(ctx, user1, user2, bestof):
                     sent = await team2.send(msg)
                     i = 0
                     for x, y in newcsbans.getAllmaps().items():
-                        if y is "neutral":
+                        if y == "neutral":
                             emoji = reaction2[i]
                             await sent.add_reaction(emoji)
                             i += 1
